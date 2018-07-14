@@ -1,0 +1,11 @@
+﻿{
+  "Id": "ShowAvailableItems",
+  "DisplayName": "ShowAvailableItems",
+  "Author": "weskey",
+  "Version": "0.1",
+  "Requires": [ "0Harmony.dll" ],
+  "Enable": true,
+  "AssemblyName": "ShowAvailableItems.dll",
+  "EntryMethod": "ShowAvailableItems.QPatch.Patch",
+  "Config": { }
+}
