@@ -2,7 +2,7 @@
   "Id": "ShowAvailableItems",
   "DisplayName": "ShowAvailableItems",
   "Author": "weskey",
-  "Version": "0.1",
+  "Version": "1.0",
   "Requires": [ "0Harmony.dll" ],
   "Enable": true,
   "AssemblyName": "ShowAvailableItems.dll",
