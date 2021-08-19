@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection.Emit;
 using System.Collections.Generic;
-using Harmony;
+using HarmonyLib;
 
 namespace ShowAvailableItems
 {

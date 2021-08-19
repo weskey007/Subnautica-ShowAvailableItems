@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Reflection;
 
@@ -6,20 +6,26 @@ namespace ShowAvailableItems
 {
 	public static class QPatch
 	{
+#if SN1
+        internal const string EASYCRAFT_ASSEMBLY = "EasyCraft";
+#elif BZ
+        internal const string EASYCRAFT_ASSEMBLY = "EasyCraft_BZ";
+#endif
+        
 		public static void Patch()
 		{
 			Logger.Log("Patching...");
-			var harmony = HarmonyInstance.Create("weskey.subnautica.showavailableitems.mod");
+			var harmony = new Harmony("weskey.subnautica.showavailableitems.mod");
 			
 			var tooltipFactoryTranspiler = AccessTools.Method(typeof(ToolTipFactory_HarmonyPatch), "Transpiler");
-			
-			PatchIfExists(harmony, "EasyCraft", "EasyCraft.Main", "WriteIngredients", null, null, new HarmonyMethod(tooltipFactoryTranspiler));
-			PatchIfExists(harmony, "Assembly-CSharp", "TooltipFactory", "WriteIngredients", null, null, new HarmonyMethod(tooltipFactoryTranspiler));
+
+			PatchIfExists(harmony, EASYCRAFT_ASSEMBLY, "EasyCraft.Main", "WriteIngredients", null, null, new HarmonyMethod(tooltipFactoryTranspiler));
+            PatchIfExists(harmony, "Assembly-CSharp", "TooltipFactory", "WriteIngredients", null, null, new HarmonyMethod(tooltipFactoryTranspiler));
 
             Logger.Log("Patching complete");
 		}
 
-        public static void PatchIfExists(HarmonyInstance harmony, string assemblyName, string typeName, string methodName, HarmonyMethod prefix, HarmonyMethod postfix, HarmonyMethod transpiler)
+        public static void PatchIfExists(Harmony harmony, string assemblyName, string typeName, string methodName, HarmonyMethod prefix, HarmonyMethod postfix, HarmonyMethod transpiler)
         {
             var assembly = FindAssembly(assemblyName);
             if (assembly == null)

@@ -1,0 +1,12 @@
+﻿{
+    "Id": "ShowAvailableItems",
+    "DisplayName": "ShowAvailableItems",
+    "Author": "weskey",
+    "Version": "1.0",
+    "Requires": [ "0Harmony.dll" ],
+    "Enable": true,
+    "AssemblyName": "ShowAvailableItems.dll",
+    "EntryMethod": "ShowAvailableItems.QPatch.Patch",
+    "Config": {},
+    "Game": "BelowZero"
+}
